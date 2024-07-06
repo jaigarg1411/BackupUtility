@@ -19,7 +19,8 @@ class DBUtil
 {
     sqlite3* db;
     char* errMsg;
-    const string dbName = "../DB/BackupUtilityDB.db";
+    const string dbName = "BackupUtilityDB.db";
+    const string dbDir = "../DB";
     
     public:
         DBUtil();

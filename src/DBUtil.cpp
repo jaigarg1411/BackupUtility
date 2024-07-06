@@ -3,7 +3,10 @@
 
 DBUtil::DBUtil()
 {
-    if(sqlite3_open(dbName.c_str(), &db) != SQLITE_OK)
+    if (!filesystem::exists(dbDir))
+        filesystem::create_directory(dbDir);
+    
+    if(sqlite3_open((dbDir + "/" + dbName).c_str(), &db) != SQLITE_OK)
     {
         cout << "Can't open database: " << sqlite3_errmsg(db) << endl;
         exit(1);
