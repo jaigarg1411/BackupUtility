@@ -30,7 +30,7 @@ class DBUtil
         void createJobsTable();
         void insertJobEntry(int jobId, string jobType, string startTime, string endTime, string status, string path);
         string getJobStatus(int jobId);
-        char getJobType(int jobId);
+        string getJobType(int jobId);
         string getBackupPath(int jobId);
         string getStartTime(int jobId);
         string getLastBackupTimeFromPath(string path);

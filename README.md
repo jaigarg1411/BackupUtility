@@ -8,6 +8,8 @@ It supports the following kinds of backups:
   
 - **Incremental Backup:** Backup of files that have been modified since the last backup.
 
+**Restore:** Restore of files backed up in the specified job id.
+
 ## Scope
 
 - Uses SQLite DB for storing backup information.
@@ -18,6 +20,7 @@ It supports the following kinds of backups:
   - Display all backup jobs with details.
   - Display file paths backed up for a specific jobId.
   - Supports deletion of backup jobs (including associated data).
+  - Supports both in-place and out-of-place restore of files backed up in the specified job id.
 
 ## Usage
 

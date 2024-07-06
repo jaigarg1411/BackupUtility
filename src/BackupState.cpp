@@ -27,8 +27,8 @@ void BackupState::loadJobConfigFromDB(int jobId)
     this->backupPath = this->dbUtil->getBackupPath(jobId);
     
     // Load backup type
-    char backupType = this->dbUtil->getJobType(jobId);
-    this->backupType = backupType == 'F' ? FULL : INCREMENTAL;
+    string backupType = this->dbUtil->getJobType(jobId);
+    this->backupType = backupType == "FULL" ? FULL : INCREMENTAL;
     
     // Load start time
     this->startTime = this->dbUtil->getStartTime(jobId);

@@ -158,26 +158,26 @@ string DBUtil::getStartTime(int jobId)
     }
 }
 
-char DBUtil::getJobType(int jobId)
+string DBUtil::getJobType(int jobId)
 {
     string sql = "SELECT Type FROM Jobs WHERE JobId = " + to_string(jobId) + ";";
     sqlite3_stmt* stmt;
     if(sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, NULL) != SQLITE_OK)
     {
         cout << "SQL error: " << sqlite3_errmsg(db) << endl;
-        return ' ';
+        return "";
     }
     
     if(sqlite3_step(stmt) == SQLITE_ROW)
     {
-        char jobType = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)))[0];
+        string jobType = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)));
         sqlite3_finalize(stmt);
         return jobType;
     }
     else
     {
         sqlite3_finalize(stmt);
-        return ' ';
+        return "";
     }
 }
 

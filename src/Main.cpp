@@ -1,5 +1,6 @@
 #include "StdNamespace.h"
 #include "BackupController.h"
+#include "RestoreController.h"
 
 int main() {
     
@@ -17,6 +18,7 @@ int main() {
         cout << "2. Browse all backups" << endl;
         cout << "3. Browse backup items for a job" << endl;
         cout << "4. Delete Backup" << endl;
+        cout << "5. Restore data" << endl;
         cout << "0. Exit" << endl;
         cout << endl;
         cin >> option;
@@ -64,6 +66,20 @@ int main() {
             cin >> jobId;
             BackupController* backupController = new BackupController();
             backupController->deleteJob(jobId);
+        }
+        else if(option == 5)
+        {
+            int jobId;
+            cout << endl << "Enter jobId : ";
+            cin >> jobId;
+            
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // clearing the newline character from buffer
+            
+            string destination = "";
+            cout << endl << "Enter destination path (leave empty for in-place restore): ";
+            getline(cin, destination);
+            RestoreController* restoreController = new RestoreController();
+            restoreController->restoreBackup(jobId, destination);
         }
         else if(option == 0)
         {
